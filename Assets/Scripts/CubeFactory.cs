@@ -2,9 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Factory : MonoBehaviour
+public class CubeFactory : MonoBehaviour
 {
     [SerializeField] private Cube _prefab;
+    
     private List<Cube> _pool;
 
     private void Awake()

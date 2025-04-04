@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
-    [SerializeField] private Factory _factory;
+    [SerializeField] private CubeFactory _cubeFactory;
     [SerializeField] private Exploder _exploder;
     [SerializeField] private LayerMask _cubeLayerMask;
 
@@ -17,7 +17,7 @@ public class Game : MonoBehaviour
     {
         for (int i = 0; i < _startingCubesCount; i++)
         {
-            Cube cube = _factory.GetCube();
+            Cube cube = _cubeFactory.GetCube();
             cube.transform.position = new Vector3(i * _step, 0, 0);
             cube.transform.localScale = _settings.StartingCubeScale;
             cube.gameObject.SetActive(true);
@@ -51,7 +51,7 @@ public class Game : MonoBehaviour
             
             for (int i = 0; i < newCubeCount; i++)
             {
-                Cube newCube = _factory.GetCube();
+                Cube newCube = _cubeFactory.GetCube();
                 newCube.transform.position = cubePosition;
                 newCube.transform.localScale = cube.transform.localScale;
                 newCube.HalveLocalScale();

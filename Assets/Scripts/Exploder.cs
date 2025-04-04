@@ -13,8 +13,8 @@ public class Exploder : MonoBehaviour
         {
             Vector3 offset = Random.insideUnitSphere * _initialOffset;
             cube.transform.position += offset;
-            Rigidbody rb = cube.GetComponent<Rigidbody>();
-            rb.AddExplosionForce(_explosionForce, explosionOrigin, _explosionRadius);
+            Rigidbody rigidbody = cube.GetComponent<Rigidbody>();
+            rigidbody.AddExplosionForce(_explosionForce, explosionOrigin, _explosionRadius);
         }
     }
 }

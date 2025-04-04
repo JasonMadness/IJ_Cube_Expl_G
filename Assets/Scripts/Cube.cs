@@ -6,6 +6,7 @@ public class Cube : MonoBehaviour
 {
     private Renderer _renderer;
     private float _splitChance = 1f;
+    private float _half = 0.5f;
 
     public float SplitChance => _splitChance;
 
@@ -17,11 +18,11 @@ public class Cube : MonoBehaviour
 
     public void HalveSplitChance()
     {
-        _splitChance *= 0.5f;
+        _splitChance *= _half;
     }
 
     public void HalveLocalScale()
     {
-        transform.localScale *= 0.5f;
+        transform.localScale *= _half;
     }
 }
