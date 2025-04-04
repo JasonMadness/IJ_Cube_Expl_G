@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Game : MonoBehaviour
+public class MouseClickHandler : MonoBehaviour
 {
     [SerializeField] private CubeFactory _cubeFactory;
     [SerializeField] private Exploder _exploder;
