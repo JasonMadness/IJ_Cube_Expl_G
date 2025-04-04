@@ -552,8 +552,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionForce: 2500
-  _explosionRadius: 10
-  _initialOffset: 0.5
+  _explosionRadius: 5
+  _initialOffset: 1
 --- !u!1 &934059233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,7 +1037,7 @@ Transform:
   m_GameObject: {fileID: 1571136270}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
