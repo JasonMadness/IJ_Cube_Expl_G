@@ -18,13 +18,18 @@ public class CubeFactory : MonoBehaviour
         Cube cubeToGet = _pool.FirstOrDefault(cube => cube.gameObject.activeSelf == false);
 
         if (cubeToGet == null)
-            cubeToGet = CreateNewCube();
+            cubeToGet = Create();
         
         cubeToGet.gameObject.SetActive(true);
         return cubeToGet;
     }
 
-    private Cube CreateNewCube()
+    public void ReturnToPool(Cube cube)
+    {
+        cube.gameObject.SetActive(false);
+    }
+
+    private Cube Create()
     {
         Cube newCube = Instantiate(_prefab, transform);
         newCube.gameObject.SetActive(false);
