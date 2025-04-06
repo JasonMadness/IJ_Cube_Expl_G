@@ -987,7 +987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d499a758f995f45b0c3121bc84a07b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cubeFactory: {fileID: 0}
+  _cubeFactory: {fileID: 843127112}
   _exploder: {fileID: 910166019}
   _cubeLayerMask:
     serializedVersion: 2
