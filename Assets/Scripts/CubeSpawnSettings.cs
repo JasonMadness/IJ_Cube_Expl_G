@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class GameSettings
+public class CubeSpawnSettings
 {
     public Vector3 StartingCubeScale { get; } = Vector3.one * 4;
     public int MinCubes { get; } = 2;
-    public int MaxCubes { get; } = 7;
+    public int MaxCubes { get; } = 6;
 }

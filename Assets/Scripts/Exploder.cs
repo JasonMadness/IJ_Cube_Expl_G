@@ -14,7 +14,9 @@ public class Exploder : MonoBehaviour
             Vector3 offset = Random.insideUnitSphere * _initialOffset;
             cube.transform.position += offset;
             Rigidbody rigidbody = cube.GetComponent<Rigidbody>();
-            rigidbody.AddExplosionForce(_explosionForce, explosionOrigin, _explosionRadius);
+
+            if (rigidbody != null)
+                rigidbody.AddExplosionForce(_explosionForce, explosionOrigin, _explosionRadius);
         }
     }
 }

@@ -16,12 +16,18 @@ public class Cube : MonoBehaviour
         _renderer.material.color = Random.ColorHSV();
     }
 
-    public void HalveSplitChance()
+    public void Init()
+    {
+        HalveSplitChance();
+        HalveLocalScale();
+    }
+
+    private void HalveSplitChance()
     {
         _splitChance *= _half;
     }
 
-    public void HalveLocalScale()
+    private void HalveLocalScale()
     {
         transform.localScale *= _half;
     }
