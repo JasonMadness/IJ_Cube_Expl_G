@@ -7,16 +7,13 @@ public class Exploder : MonoBehaviour
     [SerializeField] private float _explosionRadius = 5f;
     [SerializeField] private float _initialOffset = 0.1f;
 
-    public void Scatter(List<Cube> cubes, Vector3 explosionOrigin)
+    public void Scatter(List<Rigidbody> cubes, Vector3 explosionOrigin)
     {
-        foreach (Cube cube in cubes)
+        foreach (Rigidbody cube in cubes)
         {
             Vector3 offset = Random.insideUnitSphere * _initialOffset;
             cube.transform.position += offset;
-            Rigidbody rigidbody = cube.GetComponent<Rigidbody>();
-
-            if (rigidbody != null)
-                rigidbody.AddExplosionForce(_explosionForce, explosionOrigin, _explosionRadius);
+            cube.AddExplosionForce(_explosionForce, explosionOrigin, _explosionRadius);
         }
     }
 }
