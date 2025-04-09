@@ -5,6 +5,7 @@ using UnityEngine;
 public class Cube : MonoBehaviour
 {
     private Renderer _renderer;
+    private int _generation = 0;
     private float _splitChance = 1f;
     private float _half = 0.5f;
 
@@ -16,19 +17,26 @@ public class Cube : MonoBehaviour
         _renderer.material.color = Random.ColorHSV();
     }
 
-    public void Init()
+    public void Init(Vector3 startingScale, float startingSplitChance)
     {
-        HalveSplitChance();
-        HalveLocalScale();
+        _generation++;
+        CalculateSplitChance(startingSplitChance);
+        CalculateLocalScale(startingScale);
     }
 
-    private void HalveSplitChance()
+    private void CalculateSplitChance(float startingSplitChance)
     {
-        _splitChance *= _half;
+        for (int i = 0; i < _generation; i++)
+            startingSplitChance *= _half;
+
+        _splitChance = startingSplitChance;
     }
 
-    private void HalveLocalScale()
+    private void CalculateLocalScale(Vector3 startingScale)
     {
-        transform.localScale *= _half;
+        for (int i = 0; i < _generation; i++)
+            startingScale *= _half;
+
+        transform.localScale = startingScale;
     }
 }
