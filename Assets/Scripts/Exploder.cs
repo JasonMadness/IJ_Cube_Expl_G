@@ -3,17 +3,33 @@ using UnityEngine;
 
 public class Exploder : MonoBehaviour
 {
-    [SerializeField] private float _explosionForce = 500f;
-    [SerializeField] private float _explosionRadius = 5f;
-    [SerializeField] private float _initialOffset = 0.1f;
+    [SerializeField] private float _baseExplosionForce = 500f; 
+    [SerializeField] private float _baseExplosionRadius = 5f; 
+    [SerializeField] private float _initialOffset = 0.1f; 
+    [SerializeField] private LayerMask _cubeLayerMask;
 
-    public void Scatter(List<Rigidbody> cubes, Vector3 explosionOrigin)
+    public void Scatter(List<Rigidbody> newCubes, Vector3 explosionOrigin, float cubeScale)
     {
-        foreach (Rigidbody cube in cubes)
+        float scaleFactor = Mathf.Clamp(4f / cubeScale, 1f, 10f);
+        float explosionRadius = _baseExplosionRadius * scaleFactor;
+        float explosionForce = _baseExplosionForce * scaleFactor;
+
+        Collider[] colliders = Physics.OverlapSphere(explosionOrigin, explosionRadius, _cubeLayerMask);
+        List<Rigidbody> affectedCubes = new List<Rigidbody>();
+
+        foreach (Collider collider in colliders)
+        {
+            if (collider.TryGetComponent(out Rigidbody rigidbody))
+                affectedCubes.Add(rigidbody);
+        }
+
+        affectedCubes.AddRange(newCubes);
+
+        foreach (Rigidbody cube in affectedCubes)
         {
             Vector3 offset = Random.insideUnitSphere * _initialOffset;
             cube.transform.position += offset;
-            cube.AddExplosionForce(_explosionForce, explosionOrigin, _explosionRadius);
+            cube.AddExplosionForce(explosionForce, explosionOrigin, explosionRadius);
         }
     }
 }

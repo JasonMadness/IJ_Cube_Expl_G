@@ -648,7 +648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8decdaf2d5e49ad4dbb847550c872396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cubeFactory: {fileID: 843127112}
+  _cubePool: {fileID: 843127112}
   _exploder: {fileID: 910166019}
 --- !u!4 &871582704
 Transform:
@@ -709,9 +709,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d06fd350538eb644b60b363ff4a02e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionForce: 2500
-  _explosionRadius: 5
+  _baseExplosionForce: 500
+  _baseExplosionRadius: 5
   _initialOffset: 1
+  _cubeLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &934059233
 GameObject:
   m_ObjectHideFlags: 0

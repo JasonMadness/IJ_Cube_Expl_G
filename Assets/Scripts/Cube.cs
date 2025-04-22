@@ -9,6 +9,7 @@ public class Cube : MonoBehaviour
     private float _splitChance = 1f;
     private float _half = 0.5f;
 
+    public int Generation => _generation;
     public float SplitChance => _splitChance;
 
     private void Awake()
@@ -17,9 +18,9 @@ public class Cube : MonoBehaviour
         _renderer.material.color = Random.ColorHSV();
     }
 
-    public void Init(Vector3 startingScale, float startingSplitChance)
+    public void Init(int generation, Vector3 startingScale, float startingSplitChance)
     {
-        _generation++;
+        _generation = generation;
         CalculateSplitChance(startingSplitChance);
         CalculateLocalScale(startingScale);
     }

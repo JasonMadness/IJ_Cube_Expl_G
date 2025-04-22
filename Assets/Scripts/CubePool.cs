@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class CubePool : MonoBehaviour
@@ -10,10 +9,10 @@ public class CubePool : MonoBehaviour
 
     public Cube GetCube()
     {
+        if (_pool.Count == 0)
+            Create();
+        
         Cube cubeToGet = _pool.Dequeue();
-
-        if (cubeToGet == null)
-            cubeToGet = Create();
         
         cubeToGet.gameObject.SetActive(true);
         return cubeToGet;
@@ -25,10 +24,9 @@ public class CubePool : MonoBehaviour
         _pool.Enqueue(cube);
     }
 
-    private Cube Create()
+    private void Create()
     {
         Cube newCube = Instantiate(_prefab, transform);
         ReturnToPool(newCube);
-        return newCube;
     }
 }
